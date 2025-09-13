@@ -18,7 +18,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'AI LLMs',
+        'company': 'Dialog Finance',
+        'website': 'https://www.dialogfinance.lk/',
         'current_year': str(datetime.now().year)
     }
     

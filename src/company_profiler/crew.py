@@ -177,7 +177,7 @@ class CompanyProfiler():
     def report_generation(self) -> Task:
         return Task(
             config=self.tasks_config['report_generation'], # type: ignore[index]
-            output_file='report.md'
+            output_file='src/company_profiler/Reports/Report.md'
         )
 
     @crew

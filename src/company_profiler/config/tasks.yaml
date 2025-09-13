@@ -125,12 +125,12 @@ data_analysis_and_swot:
 
 report_generation:
   description: >
-    Compile all the collected data and perform a comprehensive analysis worth 30 pages.
+    Compile all the collected data and perform a comprehensive analysis worth 30 pages markdown report.
     This is strategic document that translates research into a clear, compelling, and actionable plan for a business to gain an advantage in its market.
     Includes stats, graphs, tables and all other visualizations.
     Create a comprehensive report of the analysis that should be adequete for stragic decision making.
   expected_output: >
-    The report should include fallowing sections:
+    The markdown report should include fallowing sections:
       1.Executive Summary
         - Overview: A brief, high-level summary of the key findings and conclusions of the analysis.
         - Key Insights: The most important takeaways, such as a major market gap, a key weakness of a competitor, or a significant threat, short coming of {company}, opportunities.
