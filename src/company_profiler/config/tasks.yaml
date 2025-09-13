@@ -1,17 +1,179 @@
-research_task:
+project_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
+    Plan the steps to create an extensive competitors analysis and comparison aganinst {company}
+  expected_output: >
+    Strategic plan to execute to create the competitor analysis report including:
+      - Deconstructing the goal to minor steps
+      - Creating a list of tasks to be executed
+      - Identifying team members skills and  experience
+      - Delegating tasks and responsibilities between team members
+      - Overlooking and evaluating the excution and progress of the project
+      - Optimizing and changing taks delegation if needed
+      - Advising team menbers on steps taken and futre tasks
+  agent: strategist
+
+competitor_identification:
+  description: >
+    To identify and create a list of direct, indirect, possible future competitors and substitute competitors to be profiled in {country}.
+    Get a deeper understanding of your company {company} and its profile by visiting {website}.
+    Afterwards find companies that match the same profile as {company} and direct, indirect, possible future competitors and substitute competitors in the local market {country}.
     the current year is {current_year}.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A list of 10 competitors with the fallowing details:
+      - Name
+      - Website
+      - competitor category(direct, indirect, possible future, substitute)
+      - Industry
+      - Description
+  agent: strategist
 
-reporting_task:
+metrics_identification:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    To identify and create a list of metrics to be used to evaluate the competitors.
+    These metrics should evaluate all aspecst of the {company} and the competitor both in qualitative and quantative aspects.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A list of 20 metrics to be used to evaluate the competitors.
+    The metrics should be relevant to the company {company} and the competitors.
+    These metrics should evaluate the {company} and competitors 5 year period of time to show the progress over the time ending with the current year {current_year}
+  agent: strategist
+
+financial_market_data_collection:
+  description: >
+    To collect all financial market data for {company} and the competitors.
+    Use 'https://www.cse.lk/' and 'https://www.cbsl.gov.lk/' and other sources.
+  expected_output: >
+    The gather data should include but not limited to:
+      - Market share
+      - Revenue
+      - Profit
+      - Sales
+      - Shareholders list
+      - Market capitalization
+      - Market size
+      - Market growth
+      - Market volatility
+      - Funding rounds
+      - Growth rates from public sources, financial databases, and market research reports
+  agent: strategist
+               
+porduct_and_feature_data:
+  description: >
+    To collect all product and feature data for {company} and the competitors.
+    Conduct a deep dive into {company} and competitors' products, performing a feature-by-feature breakdown, analyzing their pricing models, and assessing their user experience.
+  expected_output: >
+    The gather data should include but not limited to:
+      - Product and feature data
+      - Pricing models
+      - Market share for each product
+      - Deprecated products and features and the reason for deprecation
+      - Social media presenece
+  agent: strategist
+
+social_media_data:
+  description: >
+    To collect all social media data for {company} and the competitors.
+    Conduct a deep dive into {company} and competitors' social media platforms, analyzing their reach, engagement, and user interaction.
+  expected_output: >
+    The gather data should include but not limited to:
+      - Social media presenece
+      - platforms used by the {company} and competitors
+      - platforms and their reach
+      - platforms and their engagement
+      - platforms and their user interaction
+      - platforms and their user interaction for each competitor
+      - platforms and their user interaction for each competitor and product
+      - adverticed products and features
+  agent: strategist
+
+customer_and_sales_data:
+  description: >
+    To collect all customer and sales related data for {company} and competitors.
+    Conduct a deep dive into {company} and competitors' customer data, analyzing their demographics, purchasing behavior, and sales data.
+  expected_output: >
+    The gather data should include but not limited to:
+      - Customer and sales data
+      - Customer sentiment
+      - Customer experience data
+      - Customer experience data for each product
+      - Customer and sales data for each competitor
+      - Customer and sales data for each competitor and product
+      - Customer and sales data for each competitor and product and feature
+  agent: strategist
+
+data_analysis_and_swot:
+  description: >
+    Compile all the collected data and perform a comprehensive analysis.
+    Evaluating data collect from the previous tasks and perform a SWOT analysis.
+    If not satisfactory results are obtained, the tasks should be adjusted and re-executed.
+  expected_output: >
+    The SWOT analysis should include but not limited to:
+      - Strengths
+      - Weaknesses
+      - Opportunities
+      - Threats
+      - Summaries
+      - Graphs
+      - Tables
+      - Visualizations
+      - Recommendations
+      - Action plan
+      - Predictions
+      - Observations
+      - Executive summary
+  context: [competitor_identification,metrics_identification,financial_market_data_collection,porduct_and_feature_data,social_media_data,customer_and_sales_data]
+  agent: strategist 
+
+report_generation:
+  description: >
+    Compile all the collected data and perform a comprehensive analysis worth 30 pages.
+    This is strategic document that translates research into a clear, compelling, and actionable plan for a business to gain an advantage in its market.
+    Includes stats, graphs, tables and all other visualizations.
+    Create a comprehensive report of the analysis that should be adequete for stragic decision making.
+  expected_output: >
+    The report should include fallowing sections:
+      1.Executive Summary
+        - Overview: A brief, high-level summary of the key findings and conclusions of the analysis.
+        - Key Insights: The most important takeaways, such as a major market gap, a key weakness of a competitor, or a significant threat, short coming of {company}, opportunities.
+        - Recommendations: A list of actionable steps your company can take based on the analysis.
+      2.Competitor Identification
+        - Direct Competitors: Companies that offer a similar product or service to the same target market.
+        - Indirect Competitors: Companies that offer different products but solve the same customer problem.
+        - Substitute Competitors: Products or services that are not in the same industry but can be used as an alternative by the customer.
+        - Possible future Competitors: Planning or in the verge of releasing similar product offering or want to come into the same industry.
+      3.{company} and Competitor Profiles
+        This section provides a detailed breakdown of each competitor. The information is often presented in a table or matrix format for easy comparison.
+        - Company Background: Mission, vision, company history, and key milestones.
+        - Company Size: Number of employees, revenue, and market share.
+        - Target Audience: Who their primary customers are (demographics, psychographics, etc.).Target Audience: Who their primary customers are (demographics, psychographics, etc.).
+        - Products and Services: A detailed list of their offerings, including features, pricing, and unique value propositions.
+        - Business Model: How they generate revenue (e.g., subscription, one-time purchase, freemium).
+      4. Competitive Analysis by Category
+        - Market and financial data: Comparison of {company} and competitors market share, revenue, profit, sales, market capitalization, market size, market growth, market volatility, funding rounds, growth rates.
+        - Product/Service Features: A feature-by-feature comparison of what {company} product offers versus competitors'. This helps identify product gaps and opportunities.
+        - Pricing Strategy: An analysis of their pricing models, including one-time costs, subscription tiers, and discounts.
+        - Marketing and Sales Strategies:
+          - Digital Marketing: Analysis of {company} and competitors website traffic, SEO keywords, content marketing strategy (blogs, videos, podcasts), and paid advertising (PPC).
+          - Social Media: Review of their social media presence, engagement rates, and content style.
+          - Sales Funnel: An assessment of their customer acquisition process, from lead generation to sales.
+        - Customer Experience (CX):
+          - Customer Reviews: A summary of feedback from review sites, social media, and forums to understand customer sentiment and identify common complaints or praises.
+          - Customer Support: How they handle customer inquiries, and the quality of their support.
+      5.SWOT Analysis
+        This is a classic and crucial part of the report. It is typically conducted for each major competitor and {company} to provide a clear side-by-side comparison.
+        - Strengths: What the competitor does well (e.g., strong brand reputation, loyal customer base, advanced technology).
+        - Weaknesses: Areas where the competitor is vulnerable or underperforming (e.g., poor customer service, outdated technology, high pricing).
+        - Opportunities: Market trends or gaps that your company can exploit (e.g., a new market segment, a competitor's strategic mistake).
+        - Threats: External factors that could harm your business (e.g., new entrants, regulatory changes, a competitor's new product launch).
+      6.Actionable Insights and Recommendations
+        - Strategic Recommendations: How can {company} leverage its strengths and the competitors' weaknesses.
+        - Actionable Recommendations: Specific steps {company} can take to improve its position.
+        - Action Plan: A concrete plan outlining the steps to implement the recommendations, including responsible teams and timelines.
+        - Future Plans: How {company} can continue to grow and adapt to new market conditions.
+        - Predictions and Observations: Predictions about future trends and observations from the data.
+        - Findings Summary: A concise, high-level summary of the key findings and conclusions of the analysis.
+        - Conclusion: A final, high-level summary of the report, including a recommendation for the next steps.
+        - Limitations: Any limitations or assumptions made in the analysis.
+        - Future Work: Any areas that need further investigation or improvement.
+        - References: Any references or citations to further research or sources.
+  context: [data_analysis_and_swot]
+  agent: strategist
