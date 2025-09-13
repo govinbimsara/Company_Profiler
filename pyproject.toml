@@ -1,0 +1,23 @@
+[project]
+name = "company_profiler"
+version = "0.1.0"
+description = "company_profiler using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.186.1,<1.0.0"
+]
+
+[project.scripts]
+company_profiler = "company_profiler.main:run"
+run_crew = "company_profiler.main:run"
+train = "company_profiler.main:train"
+replay = "company_profiler.main:replay"
+test = "company_profiler.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
